@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-navy: #0b1e3e;
+  --color-navy-deep: #081631;
+  --color-blue: #1d6ff2;
+  --color-blue-hover: #1560db;
+  --color-blue-light: #4da3ff;
+  --color-mist: #f4f7fc;
+  --color-ink: #0f172a;
+  --color-muted: #55627a;
+  --color-line: #e3e9f4;
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+section[id],
+div[id] {
+  scroll-margin-top: 96px;
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: var(--color-blue-light);
+  color: var(--color-navy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: no-preference) {
+  .animate-float {
+    animation: wrv-float 7s ease-in-out infinite;
+  }
+
+  .animate-rise {
+    animation: wrv-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes wrv-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wrv-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes wrv-progresso {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-progresso {
+  animation-name: wrv-progresso;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(11, 30, 62, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 30, 62, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 75% at 50% 15%,
+    black 25%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(
+    ellipse 85% 75% at 50% 15%,
+    black 25%,
+    transparent 78%
+  );
 }

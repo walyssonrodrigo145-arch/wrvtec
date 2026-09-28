@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WRV Tecnologia — Landing Page
 
-## Getting Started
+Site institucional da WRV Tecnologia (Next.js 15 + TypeScript + Tailwind CSS v4).
 
-First, run the development server:
+## Comandos
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # desenvolvimento em http://localhost:3000
+npm run lint     # ESLint
+npx tsc --noEmit # checagem de tipos
+npm run build    # build de produção (pare o dev antes)
+npm start        # sobe o build de produção
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Nunca rode `npm run build` com o `npm run dev` ligado: os dois usam a pasta `.next` e o dev quebra.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variáveis de ambiente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copie `.env.example` para `.env` e preencha:
 
-## Learn More
+| Variável | Obrigatória | Descrição |
+|----------|-------------|-----------|
+| `NEXT_PUBLIC_SITE_URL` | Produção | URL pública do site (ex.: `https://wrvsystems.com`) |
+| `NEXT_PUBLIC_GA_ID` | Não | ID do Google Analytics 4 (`G-XXXXXXX`); só carrega após consentimento |
+| `RESEND_API_KEY` | Sim (leads) | Chave da API do Resend para envio dos leads |
+| `LEAD_TO_EMAIL` | Sim (leads) | E-mail(s) que recebem os leads (separe múltiplos por vírgula) |
+| `LEAD_FROM_EMAIL` | Sim (leads) | Remetente verificado no Resend |
+| `RATE_LIMIT_SALT` | Recomendada | Sal para hash de IP no rate limit |
+| `ADMIN_PASSWORD` | Sim (painel) | Senha de acesso ao painel `/admin` |
+| `ADMIN_SESSION_SECRET` | Recomendada | Segredo da assinatura da sessão do painel |
 
-To learn more about Next.js, take a look at the following resources:
+Sem `RESEND_API_KEY`, o formulário continua funcionando em modo local (o lead é registrado no log do servidor e fica salvo no painel, sem envio de e-mail).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Painel de gestão de leads
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Acesse `http://localhost:3000/admin` (senha = `ADMIN_PASSWORD`).
+- Lista, busca, filtro por status, alteração de status e exportação CSV.
+- Os leads ficam salvos em `.data/leads.json` (pasta ignorada pelo Git).
+- Em VPS o arquivo persiste normalmente; **na Vercel o disco é efêmero** — nesse caso migrar para Postgres (ver `plano-gestao-leads.md`).
 
-## Deploy on Vercel
+## Onde editar o conteúdo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Conteúdo | Arquivo |
+|----------|---------|
+| Produtos / portfólio | `src/content/produtos.ts` |
+| Seção "Conheça na prática" (telas) | `src/content/telas.ts` |
+| Diferenciais | `src/content/diferenciais.ts` |
+| Contato (WhatsApp, e-mail, local) | `src/content/site.ts` |
+| Redes sociais | `src/content/redes-sociais.ts` |
+| Imagens das telas | `public/prints/` (desktop 16:10 · mobile 9:19) |
+| Molduras notebook/celular | `public/frames/laptop-frame.png` e `phone-frame.png` |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+
+- **Vercel (recomendado):** importar o repositório, definir as variáveis de ambiente e apontar o domínio `wrvsystems.com` (DNS: `A` para `76.76.21.21` ou `CNAME` conforme instruído pela Vercel).
+- **VPS:** `npm ci && npm run build && npm start` atrás de um proxy (Nginx) com HTTPS.
