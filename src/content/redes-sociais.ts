@@ -9,17 +9,12 @@ export type RedeSocial = {
 export const redesSociais: RedeSocial[] = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/wrvtecnologia",
+    href: "https://www.instagram.com/musicpro.oficial",
     icone: "instagram",
   },
   {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/wrvtecnologia",
-    icone: "linkedin",
-  },
-  {
     label: "YouTube",
-    href: "https://www.youtube.com/@wrvtecnologia",
+    href: "https://www.youtube.com/@WRVTecnologiaTutorias",
     icone: "youtube",
   },
 ];

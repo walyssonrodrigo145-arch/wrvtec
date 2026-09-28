@@ -3,8 +3,8 @@ export const site = {
   tagline: "Tecnologia para simplificar negócios e conectar pessoas.",
   eyebrow: "TECNOLOGIA QUE CONECTA, SIMPLIFICA E TRANSFORMA",
   email: "comercial@wrvsystems.com.br",
-  telefoneExibicao: "(11) 98765-4321",
-  whatsappNumero: "5511987654321",
+  telefoneExibicao: "(33) 98405-5949",
+  whatsappNumero: "5533984055949",
   whatsappMensagem:
     "Olá! Vim pelo site da WRV Tecnologia e gostaria de falar com um especialista.",
   localizacao: "São Paulo - SP",
