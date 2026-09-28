@@ -21,7 +21,7 @@ Copie `.env.example` para `.env` e preencha:
 
 | Variável | Obrigatória | Descrição |
 |----------|-------------|-----------|
-| `NEXT_PUBLIC_SITE_URL` | Produção | URL pública do site (ex.: `https://wrvsystems.com`) |
+| `NEXT_PUBLIC_SITE_URL` | Produção | URL pública do site (ex.: `https://wrvsystems.com.br`) |
 | `NEXT_PUBLIC_GA_ID` | Não | ID do Google Analytics 4 (`G-XXXXXXX`); só carrega após consentimento |
 | `RESEND_API_KEY` | Sim (leads) | Chave da API do Resend para envio dos leads |
 | `LEAD_TO_EMAIL` | Sim (leads) | E-mail(s) que recebem os leads (separe múltiplos por vírgula) |
@@ -53,5 +53,5 @@ Sem `RESEND_API_KEY`, o formulário continua funcionando em modo local (o lead �
 
 ## Deploy
 
-- **Vercel (recomendado):** importar o repositório, definir as variáveis de ambiente e apontar o domínio `wrvsystems.com` (DNS: `A` para `76.76.21.21` ou `CNAME` conforme instruído pela Vercel).
+- **Vercel (recomendado):** importar o repositório, definir as variáveis de ambiente e apontar o domínio `wrvsystems.com.br` (DNS: `A` para `76.76.21.21` ou `CNAME` conforme instruído pela Vercel).
 - **VPS:** `npm ci && npm run build && npm start` atrás de um proxy (Nginx) com HTTPS.

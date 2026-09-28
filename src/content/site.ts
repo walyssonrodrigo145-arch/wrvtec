@@ -9,5 +9,5 @@ export const site = {
     "Olá! Vim pelo site da WRV Tecnologia e gostaria de falar com um especialista.",
   localizacao: "São Paulo - SP",
   localizacaoComplemento: "Atendemos em todo o Brasil",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wrvsystems.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wrvsystems.com.br",
 } as const;
