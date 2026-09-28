@@ -271,7 +271,7 @@ export function ContatoForm() {
             aria-invalid={Boolean(errors.telefone)}
             aria-describedby={errors.telefone ? "erro-telefone" : undefined}
             className={`mt-1.5 ${classeCampo(Boolean(errors.telefone))}`}
-            placeholder="(11) 98765-4321"
+            placeholder="(33) 98405-5949"
           />
           {errors.telefone ? (
             <p id="erro-telefone" className="mt-1.5 text-xs text-error">

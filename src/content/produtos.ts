@@ -1,18 +1,6 @@
-export type ProdutoSlug =
-  | "musicpro"
-  | "dancepro"
-  | "sitepro"
-  | "apppro"
-  | "cloudpro"
-  | "solucoes-personalizadas";
+export type ProdutoSlug = "musicpro" | "dancepro";
 
-export type ProdutoLogo =
-  | "musicpro"
-  | "dancepro"
-  | "sitepro"
-  | "apppro"
-  | "cloudpro"
-  | "personalizadas";
+export type ProdutoLogo = "musicpro" | "dancepro";
 
 export type Produto = {
   slug: ProdutoSlug;
@@ -59,74 +47,6 @@ export const produtos: Produto[] = [
       "Comunicação com responsáveis",
     ],
     ordem: 2,
-  },
-  {
-    slug: "sitepro",
-    nome: "SitePro",
-    subtitulo: "Sites profissionais e personalizados",
-    descricao:
-      "Tenha um site moderno, responsivo e completo para o seu negócio.",
-    descricaoLonga:
-      "Com o SitePro, sua empresa ganha um site profissional, rápido e preparado para aparecer no Google, com layout personalizado e foco total em gerar contatos e vendas.",
-    logo: "sitepro",
-    recursos: [
-      "Layout moderno e responsivo",
-      "Otimizado para SEO e performance",
-      "Publicação e hospedagem incluídas",
-      "Fácil de atualizar e evoluir",
-    ],
-    ordem: 3,
-  },
-  {
-    slug: "apppro",
-    nome: "AppPro",
-    subtitulo: "Aplicativos sob medida",
-    descricao:
-      "Transforme sua ideia em um aplicativo funcional e de alto desempenho.",
-    descricaoLonga:
-      "O AppPro transforma a sua ideia em um aplicativo funcional para iOS e Android, com alto desempenho, boa experiência de uso e integração com os sistemas que você já utiliza.",
-    logo: "apppro",
-    recursos: [
-      "Aplicativos para iOS e Android",
-      "Experiência de uso de alto desempenho",
-      "Integração com seus sistemas",
-      "Publicação e atualização nas lojas",
-    ],
-    ordem: 4,
-  },
-  {
-    slug: "cloudpro",
-    nome: "CloudPro",
-    subtitulo: "Infraestrutura em nuvem",
-    descricao:
-      "Mais segurança, flexibilidade e performance para o seu negócio.",
-    descricaoLonga:
-      "O CloudPro cuida da infraestrutura do seu negócio na nuvem, com servidores monitorados, backup, segurança e escalabilidade para acompanhar o seu crescimento.",
-    logo: "cloudpro",
-    recursos: [
-      "Servidores em nuvem gerenciados",
-      "Backup e segurança dos dados",
-      "Escalabilidade sob demanda",
-      "Monitoramento contínuo",
-    ],
-    ordem: 5,
-  },
-  {
-    slug: "solucoes-personalizadas",
-    nome: "Soluções Personalizadas",
-    subtitulo: "Do seu jeito, para o seu desafio",
-    descricao:
-      "Desenvolvemos sistemas sob medida para atender às necessidades do projeto.",
-    descricaoLonga:
-      "Quando o desafio exige algo único, desenvolvemos sistemas sob medida: entendemos o seu processo, desenhamos a solução e construímos um software que se encaixa exatamente na sua operação.",
-    logo: "personalizadas",
-    recursos: [
-      "Levantamento de requisitos com a sua equipe",
-      "Desenvolvimento sob medida",
-      "Integração com os processos do seu negócio",
-      "Suporte e evolução contínua",
-    ],
-    ordem: 6,
   },
 ];
 

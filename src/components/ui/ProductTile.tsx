@@ -1,17 +1,9 @@
 import { cn } from "@/lib/cn";
-import { Icon, type IconName } from "@/components/ui/Icon";
 import type { ProdutoLogo } from "@/content/produtos";
 
-const tiles: Record<ProdutoLogo, { classe: string; icone?: IconName }> = {
+const tiles: Record<ProdutoLogo, { classe: string }> = {
   musicpro: { classe: "bg-gradient-to-br from-[#2E6BFF] to-[#7B3FF2]" },
   dancepro: { classe: "bg-gradient-to-br from-[#1D6FF2] to-[#1560DB]" },
-  sitepro: { classe: "bg-gradient-to-br from-[#22C55E] to-[#16A34A]", icone: "globe" },
-  apppro: { classe: "bg-gradient-to-br from-[#F97316] to-[#EA580C]", icone: "smartphone" },
-  cloudpro: { classe: "bg-gradient-to-br from-[#06B6D4] to-[#0891B2]", icone: "cloud" },
-  personalizadas: {
-    classe: "bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9]",
-    icone: "gear",
-  },
 };
 
 export function ProductTile({
@@ -47,7 +39,7 @@ export function ProductTile({
           <rect x="13.2" y="5.5" width="2.6" height="13" rx="1.3" />
           <rect x="18.3" y="8.5" width="2.6" height="7" rx="1.3" />
         </svg>
-      ) : logo === "dancepro" ? (
+      ) : (
         <svg
           viewBox="0 0 24 24"
           className="relative h-5 w-5"
@@ -62,9 +54,7 @@ export function ProductTile({
           <path d="M14.4 9.2c1.6 1.1 2.2 2.7 1.8 4.4" />
           <path d="M8.6 20.6l2.6-4.7-1.8-3.6 3.3-2.3 2 2.7 2.9 1.3" />
         </svg>
-      ) : tile.icone ? (
-        <Icon name={tile.icone} className="relative h-5 w-5" strokeWidth={2} />
-      ) : null}
+      )}
     </span>
   );
 }
