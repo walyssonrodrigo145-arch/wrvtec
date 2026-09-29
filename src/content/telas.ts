@@ -37,8 +37,9 @@ export const telasSistema: TelaSistema[] = [
       "Seus alunos acompanham aulas, materiais, avisos e resultados pelo Portal do Aluno — e pelo aplicativo no celular.",
     sistema: "MusicPro · Área do aluno",
     desktop: "/prints/musicpro-portal-aluno-desktop.png",
-    mobile: "",
+    mobile: "/prints/musicpro-portal-aluno-mobile.png",
     desktopCompleto: true,
+    mobileCompleto: true,
   },
   {
     id: "financeiro",
@@ -83,8 +84,9 @@ export const telasSistema: TelaSistema[] = [
     descricao:
       "Agenda completa com turmas, horários, presenças e reposições — na mão do professor e da escola, direto no celular.",
     sistema: "MusicPro",
-    desktop: "",
+    desktop: "/prints/musicpro-aulas-desktop.png",
     mobile: "/prints/musicpro-agenda-mobile.png",
+    desktopCompleto: true,
     mobileCompleto: true,
   },
 ];

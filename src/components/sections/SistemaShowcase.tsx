@@ -57,23 +57,40 @@ function ConteudoTela({
 function ImagemCompleta({
   src,
   alt,
-  aspecto,
   sizes,
+  formato,
   className,
 }: {
   src: string;
   alt: string;
-  aspecto: string;
   sizes: string;
+  formato: "desktop" | "mobile";
   className?: string;
 }) {
+  if (formato === "mobile") {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        width={921}
+        height={1707}
+        quality={90}
+        sizes={sizes}
+        className={cn("h-64 w-auto max-w-none sm:h-80 lg:h-96", className)}
+      />
+    );
+  }
+
   return (
-    <div
-      className={cn("relative w-full", className)}
-      style={{ aspectRatio: aspecto }}
-    >
-      <Image src={src} alt={alt} fill sizes={sizes} className="object-contain" />
-    </div>
+    <Image
+      src={src}
+      alt={alt}
+      width={1800}
+      height={1166}
+      quality={90}
+      sizes={sizes}
+      className={cn("h-auto w-full", className)}
+    />
   );
 }
 
@@ -148,8 +165,8 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
       <ImagemCompleta
         src={ativo.desktop}
         alt={`Funcionalidade: ${ativo.titulo}`}
-        aspecto="1536 / 1024"
         sizes="(max-width: 640px) 92vw, (max-width: 1024px) 72vw, 640px"
+        formato="desktop"
       />
     ) : (
       <LaptopFrame>
@@ -168,8 +185,8 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
       <ImagemCompleta
         src={ativo.mobile}
         alt={`Funcionalidade no celular: ${ativo.titulo}`}
-        aspecto="1028 / 2071"
-        sizes="(max-width: 640px) 200px, 280px"
+        sizes="(max-width: 640px) 180px, 240px"
+        formato="mobile"
       />
     ) : (
       <PhoneFrame>
@@ -349,7 +366,13 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
                     <div className="w-full min-w-0 flex-1">
                       {conteudoDesktop}
                     </div>
-                    <div className="w-44 shrink-0 sm:w-40 lg:w-52">
+                    <div
+                      className={
+                        ativo.mobileCompleto && ativo.mobile
+                          ? "shrink-0"
+                          : "w-44 shrink-0 sm:w-40 lg:w-52"
+                      }
+                    >
                       {conteudoMobile}
                     </div>
                   </div>
