@@ -140,6 +140,49 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
 
   if (!ativo) return null;
 
+  const temDesktop = Boolean(ativo.desktop);
+  const temMobile = Boolean(ativo.mobile);
+
+  const conteudoDesktop = temDesktop ? (
+    ativo.desktopCompleto ? (
+      <ImagemCompleta
+        src={ativo.desktop}
+        alt={`Funcionalidade: ${ativo.titulo}`}
+        aspecto="1536 / 1024"
+        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 70vw, 560px"
+      />
+    ) : (
+      <LaptopFrame>
+        <ConteudoTela
+          src={ativo.desktop}
+          alt={`Funcionalidade: ${ativo.titulo}`}
+          sizes="(max-width: 1024px) 92vw, 700px"
+          ajuste={ativo.ajusteDesktop}
+        />
+      </LaptopFrame>
+    )
+  ) : null;
+
+  const conteudoMobile = temMobile ? (
+    ativo.mobileCompleto ? (
+      <ImagemCompleta
+        src={ativo.mobile}
+        alt={`Funcionalidade no celular: ${ativo.titulo}`}
+        aspecto="1028 / 2071"
+        sizes="(max-width: 640px) 200px, 260px"
+      />
+    ) : (
+      <PhoneFrame>
+        <ConteudoTela
+          src={ativo.mobile}
+          alt={`Funcionalidade no celular: ${ativo.titulo}`}
+          sizes="(max-width: 640px) 120px, 180px"
+          ajuste={ativo.ajusteMobile}
+        />
+      </PhoneFrame>
+    )
+  ) : null;
+
   return (
     <Section id="sistema" className="relative overflow-hidden bg-white">
       <div
@@ -292,49 +335,27 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
               id="painel-tela"
               role="tabpanel"
               aria-labelledby={`aba-${ativo.id}`}
-              className="relative pr-4 pb-8 sm:pr-10 sm:pb-10"
             >
-              <div key={`${ativo.id}-desktop-${versao}`} className="animate-rise">
-                {ativo.desktopCompleto && ativo.desktop ? (
-                  <ImagemCompleta
-                    src={ativo.desktop}
-                    alt={`Funcionalidade: ${ativo.titulo}`}
-                    aspecto="1536 / 1024"
-                    sizes="(max-width: 1024px) 92vw, 700px"
-                  />
-                ) : (
-                  <LaptopFrame>
-                    <ConteudoTela
-                      src={ativo.desktop}
-                      alt={`Funcionalidade: ${ativo.titulo}`}
-                      sizes="(max-width: 1024px) 92vw, 700px"
-                      ajuste={ativo.ajusteDesktop}
-                    />
-                  </LaptopFrame>
-                )}
-              </div>
-
               <div
-                key={`${ativo.id}-mobile-${versao}`}
-                className="animate-rise absolute right-0 bottom-0 w-32 [animation-delay:140ms] sm:w-40 lg:w-52"
+                key={`${ativo.id}-conteudo-${versao}`}
+                className="animate-rise"
               >
-                {ativo.mobileCompleto && ativo.mobile ? (
-                  <ImagemCompleta
-                    src={ativo.mobile}
-                    alt={`Funcionalidade no celular: ${ativo.titulo}`}
-                    aspecto="1028 / 2071"
-                    sizes="(max-width: 640px) 160px, 260px"
-                  />
-                ) : (
-                  <PhoneFrame>
-                    <ConteudoTela
-                      src={ativo.mobile}
-                      alt={`Funcionalidade no celular: ${ativo.titulo}`}
-                      sizes="(max-width: 640px) 120px, 180px"
-                      ajuste={ativo.ajusteMobile}
-                    />
-                  </PhoneFrame>
-                )}
+                {temDesktop && temMobile ? (
+                  <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-end sm:gap-8 lg:gap-10">
+                    <div className="w-full min-w-0 flex-1">
+                      {conteudoDesktop}
+                    </div>
+                    <div className="w-44 shrink-0 sm:w-36 lg:w-44">
+                      {conteudoMobile}
+                    </div>
+                  </div>
+                ) : temDesktop ? (
+                  <div>{conteudoDesktop}</div>
+                ) : temMobile ? (
+                  <div className="flex justify-center">
+                    <div className="w-52 sm:w-64">{conteudoMobile}</div>
+                  </div>
+                ) : null}
               </div>
             </div>
           </Reveal>

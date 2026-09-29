@@ -26,8 +26,8 @@ export const telasSistema: TelaSistema[] = [
     sistema: "MusicPro",
     desktop: "/prints/musicpro-dashboard-desktop.png",
     mobile: "/prints/musicpro-dashboard-mobile.png",
+    desktopCompleto: true,
     mobileCompleto: true,
-    ajusteDesktop: "contain",
   },
   {
     id: "portal-aluno",
