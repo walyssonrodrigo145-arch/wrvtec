@@ -149,7 +149,7 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
         src={ativo.desktop}
         alt={`Funcionalidade: ${ativo.titulo}`}
         aspecto="1536 / 1024"
-        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 70vw, 560px"
+        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 72vw, 640px"
       />
     ) : (
       <LaptopFrame>
@@ -169,7 +169,7 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
         src={ativo.mobile}
         alt={`Funcionalidade no celular: ${ativo.titulo}`}
         aspecto="1028 / 2071"
-        sizes="(max-width: 640px) 200px, 260px"
+        sizes="(max-width: 640px) 200px, 280px"
       />
     ) : (
       <PhoneFrame>
@@ -184,7 +184,11 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
   ) : null;
 
   return (
-    <Section id="sistema" className="relative overflow-hidden bg-white">
+    <Section
+      id="sistema"
+      className="relative overflow-hidden bg-white"
+      containerClassName="max-w-7xl"
+    >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-32 top-16 h-96 w-96 rounded-full bg-blue/5 blur-3xl"
@@ -223,7 +227,7 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.85fr_1.3fr] lg:gap-14">
+        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[0.68fr_1.55fr] lg:gap-10">
           <Reveal>
             <div>
               <div
@@ -341,11 +345,11 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
                 className="animate-rise"
               >
                 {temDesktop && temMobile ? (
-                  <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-end sm:gap-8 lg:gap-10">
+                  <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-end sm:gap-6 lg:gap-2">
                     <div className="w-full min-w-0 flex-1">
                       {conteudoDesktop}
                     </div>
-                    <div className="w-44 shrink-0 sm:w-36 lg:w-44">
+                    <div className="w-44 shrink-0 sm:w-40 lg:w-52">
                       {conteudoMobile}
                     </div>
                   </div>
