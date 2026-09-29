@@ -89,6 +89,61 @@ export const telasSistema: TelaSistema[] = [
     desktopCompleto: true,
     mobileCompleto: true,
   },
+  {
+    id: "dancepro-visao-geral",
+    produto: "dancepro",
+    titulo: "Sua escola em uma visão só",
+    descricao:
+      "Alunos, aulas e receita no mesmo painel, com os principais indicadores da escola atualizados em tempo real.",
+    sistema: "DancePro",
+    desktop: "/prints/dancepro-dashboard-desktop.png",
+    mobile: "",
+    desktopCompleto: true,
+  },
+  {
+    id: "dancepro-alunos",
+    produto: "dancepro",
+    titulo: "Gestão de alunos",
+    descricao:
+      "Matrículas e mensalidades em um só lugar: acompanhe alunos, modalidades, níveis e status sem perder o controle.",
+    sistema: "DancePro",
+    desktop: "/prints/dancepro-alunos-desktop.png",
+    mobile: "",
+    desktopCompleto: true,
+  },
+  {
+    id: "dancepro-aulas",
+    produto: "dancepro",
+    titulo: "Aulas e ensaios",
+    descricao:
+      "Uma agenda cheia de movimento: turmas, horários, estúdios e ocupação da semana organizados em um só lugar.",
+    sistema: "DancePro",
+    desktop: "/prints/dancepro-aulas-desktop.png",
+    mobile: "",
+    desktopCompleto: true,
+  },
+  {
+    id: "dancepro-financeiro",
+    produto: "dancepro",
+    titulo: "Controle financeiro",
+    descricao:
+      "Mensalidades e recebimentos sob controle, com previsão por vencimento e visão clara do fluxo de caixa.",
+    sistema: "DancePro",
+    desktop: "/prints/dancepro-financeiro-desktop.png",
+    mobile: "",
+    desktopCompleto: true,
+  },
+  {
+    id: "dancepro-relatorios",
+    produto: "dancepro",
+    titulo: "Decisões com dados",
+    descricao:
+      "Indicadores para acompanhar sua escola: receita, inadimplência, evolução financeira e métricas operacionais.",
+    sistema: "DancePro",
+    desktop: "/prints/dancepro-relatorios-desktop.png",
+    mobile: "",
+    desktopCompleto: true,
+  },
 ];
 
 export function getTelasPorProduto(slug: ProdutoSlug): TelaSistema[] {
