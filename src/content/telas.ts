@@ -75,6 +75,18 @@ export const telasSistema: TelaSistema[] = [
     ajusteDesktop: "contain",
     ajusteMobile: "cover",
   },
+  {
+    id: "aulas",
+    produto: "musicpro",
+    titulo: "Aulas e agenda",
+    descricao:
+      "Agenda completa com turmas, horários, presenças e reposições — na mão do professor e da escola, direto no celular.",
+    sistema: "MusicPro",
+    desktop: "",
+    mobile: "/prints/musicpro-agenda-mobile.png",
+    ajusteDesktop: "contain",
+    ajusteMobile: "cover",
+  },
 ];
 
 export function getTelasPorProduto(slug: ProdutoSlug): TelaSistema[] {
