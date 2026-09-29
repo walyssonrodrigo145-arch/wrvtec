@@ -54,6 +54,29 @@ function ConteudoTela({
   );
 }
 
+function ImagemCompleta({
+  src,
+  alt,
+  aspecto,
+  sizes,
+  className,
+}: {
+  src: string;
+  alt: string;
+  aspecto: string;
+  sizes: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn("relative w-full", className)}
+      style={{ aspectRatio: aspecto }}
+    >
+      <Image src={src} alt={alt} fill sizes={sizes} className="object-contain" />
+    </div>
+  );
+}
+
 export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
   const [ativoId, setAtivoId] = useState(itens[0]?.id ?? "");
   const [versao, setVersao] = useState(0);
@@ -272,28 +295,46 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
               className="relative pr-4 pb-8 sm:pr-10 sm:pb-10"
             >
               <div key={`${ativo.id}-desktop-${versao}`} className="animate-rise">
-                <LaptopFrame>
-                  <ConteudoTela
+                {ativo.desktopCompleto && ativo.desktop ? (
+                  <ImagemCompleta
                     src={ativo.desktop}
                     alt={`Funcionalidade: ${ativo.titulo}`}
+                    aspecto="1536 / 1024"
                     sizes="(max-width: 1024px) 92vw, 700px"
-                    ajuste={ativo.ajusteDesktop}
                   />
-                </LaptopFrame>
+                ) : (
+                  <LaptopFrame>
+                    <ConteudoTela
+                      src={ativo.desktop}
+                      alt={`Funcionalidade: ${ativo.titulo}`}
+                      sizes="(max-width: 1024px) 92vw, 700px"
+                      ajuste={ativo.ajusteDesktop}
+                    />
+                  </LaptopFrame>
+                )}
               </div>
 
               <div
                 key={`${ativo.id}-mobile-${versao}`}
                 className="animate-rise absolute right-0 bottom-0 w-32 [animation-delay:140ms] sm:w-40 lg:w-52"
               >
-                <PhoneFrame>
-                  <ConteudoTela
+                {ativo.mobileCompleto && ativo.mobile ? (
+                  <ImagemCompleta
                     src={ativo.mobile}
                     alt={`Funcionalidade no celular: ${ativo.titulo}`}
-                    sizes="(max-width: 640px) 120px, 180px"
-                    ajuste={ativo.ajusteMobile}
+                    aspecto="1028 / 2071"
+                    sizes="(max-width: 640px) 160px, 260px"
                   />
-                </PhoneFrame>
+                ) : (
+                  <PhoneFrame>
+                    <ConteudoTela
+                      src={ativo.mobile}
+                      alt={`Funcionalidade no celular: ${ativo.titulo}`}
+                      sizes="(max-width: 640px) 120px, 180px"
+                      ajuste={ativo.ajusteMobile}
+                    />
+                  </PhoneFrame>
+                )}
               </div>
             </div>
           </Reveal>

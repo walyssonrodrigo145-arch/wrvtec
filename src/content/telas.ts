@@ -10,6 +10,8 @@ export type TelaSistema = {
   sistema: string;
   desktop: string;
   mobile: string;
+  desktopCompleto?: boolean;
+  mobileCompleto?: boolean;
   ajusteDesktop?: AjusteImagem;
   ajusteMobile?: AjusteImagem;
 };
@@ -24,8 +26,8 @@ export const telasSistema: TelaSistema[] = [
     sistema: "MusicPro",
     desktop: "/prints/musicpro-dashboard-desktop.png",
     mobile: "/prints/musicpro-dashboard-mobile.png",
+    mobileCompleto: true,
     ajusteDesktop: "contain",
-    ajusteMobile: "cover",
   },
   {
     id: "portal-aluno",
@@ -36,8 +38,7 @@ export const telasSistema: TelaSistema[] = [
     sistema: "MusicPro · Área do aluno",
     desktop: "/prints/musicpro-portal-aluno-desktop.png",
     mobile: "",
-    ajusteDesktop: "contain",
-    ajusteMobile: "cover",
+    desktopCompleto: true,
   },
   {
     id: "financeiro",
@@ -48,8 +49,8 @@ export const telasSistema: TelaSistema[] = [
     sistema: "MusicPro",
     desktop: "/prints/financeiro-desktop.png",
     mobile: "/prints/financeiro-mobile.png",
-    ajusteDesktop: "contain",
-    ajusteMobile: "cover",
+    desktopCompleto: true,
+    mobileCompleto: true,
   },
   {
     id: "contratos",
@@ -60,8 +61,8 @@ export const telasSistema: TelaSistema[] = [
     sistema: "MusicPro",
     desktop: "/prints/contratos-desktop.png",
     mobile: "/prints/contratos-mobile.png",
-    ajusteDesktop: "contain",
-    ajusteMobile: "cover",
+    desktopCompleto: true,
+    mobileCompleto: true,
   },
   {
     id: "automacoes",
@@ -72,8 +73,8 @@ export const telasSistema: TelaSistema[] = [
     sistema: "MusicPro",
     desktop: "/prints/automacoes-desktop.png",
     mobile: "/prints/automacoes-mobile.png",
-    ajusteDesktop: "contain",
-    ajusteMobile: "cover",
+    desktopCompleto: true,
+    mobileCompleto: true,
   },
   {
     id: "aulas",
@@ -84,8 +85,7 @@ export const telasSistema: TelaSistema[] = [
     sistema: "MusicPro",
     desktop: "",
     mobile: "/prints/musicpro-agenda-mobile.png",
-    ajusteDesktop: "contain",
-    ajusteMobile: "cover",
+    mobileCompleto: true,
   },
 ];
 
