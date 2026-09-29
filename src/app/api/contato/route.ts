@@ -12,24 +12,37 @@ const LIMITE_PAYLOAD = 10_240;
 const MENSAGEM_ENVIO =
   "Não foi possível enviar sua mensagem. Tente novamente ou fale conosco pelo WhatsApp.";
 
+function extrairIp(request: Request): string {
+  const encaminhado = request.headers.get("x-forwarded-for");
+  if (encaminhado) {
+    const partes = encaminhado
+      .split(",")
+      .map((parte) => parte.trim())
+      .filter(Boolean);
+    if (partes.length > 0) return partes[partes.length - 1];
+  }
+  return request.headers.get("x-real-ip") ?? "127.0.0.1";
+}
+
 function respostaErro(
   status: number,
   code: string,
   message: string,
   extra?: Record<string, unknown>,
+  retryAfterSeconds?: number,
 ) {
+  const headers: Record<string, string> = {};
+  if (retryAfterSeconds) headers["Retry-After"] = String(retryAfterSeconds);
+
   return NextResponse.json(
     { ok: false, error: { code, message, ...extra } },
-    { status },
+    { status, headers },
   );
 }
 
 export async function POST(request: Request) {
   const requestId = crypto.randomUUID();
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    request.headers.get("x-real-ip") ??
-    "127.0.0.1";
+  const ip = extrairIp(request);
 
   let corpo: unknown;
   try {
@@ -65,20 +78,33 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, data: { delivered: false } });
   }
 
-  const limite = checkRateLimit(hashKey(ip));
-  if (!limite.allowed) {
-    return NextResponse.json(
-      {
-        ok: false,
-        error: {
-          code: "RATE_LIMIT",
-          message: "Muitas tentativas. Tente novamente em alguns minutos.",
-        },
-      },
-      {
-        status: 429,
-        headers: { "Retry-After": String(limite.retryAfterSeconds) },
-      },
+  const ipHash = hashKey(ip);
+
+  const rajada = checkRateLimit(`contato-rajada:${ipHash}`, {
+    limite: 1,
+    janelaMs: 30_000,
+  });
+  if (!rajada.allowed) {
+    return respostaErro(
+      429,
+      "RATE_LIMIT",
+      "Aguarde alguns segundos antes de enviar outra mensagem.",
+      undefined,
+      rajada.retryAfterSeconds,
+    );
+  }
+
+  const diario = checkRateLimit(`contato-diario:${ipHash}`, {
+    limite: 3,
+    janelaMs: 24 * 60 * 60 * 1000,
+  });
+  if (!diario.allowed) {
+    return respostaErro(
+      429,
+      "LIMITE_DIARIO",
+      "Limite de 3 envios por dia atingido. Fale com a gente pelo WhatsApp.",
+      undefined,
+      diario.retryAfterSeconds,
     );
   }
 

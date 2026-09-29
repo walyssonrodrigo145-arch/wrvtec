@@ -21,6 +21,13 @@ const nextConfig: NextConfig = {
   ...(process.env.DOCKER_BUILD === "1"
     ? { output: "standalone" as const }
     : {}),
+  images: {
+    formats: ["image/webp"],
+    qualities: [75],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 2678400,
+  },
   async headers() {
     return [
       {
@@ -38,6 +45,27 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
+        ],
+      },
+      {
+        source: "/admin",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          { key: "Cache-Control", value: "no-store" },
+        ],
+      },
+      {
+        source: "/admin/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          { key: "Cache-Control", value: "no-store" },
+        ],
+      },
+      {
+        source: "/api/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          { key: "Cache-Control", value: "no-store" },
         ],
       },
     ];
