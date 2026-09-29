@@ -28,6 +28,18 @@ export const telasSistema: TelaSistema[] = [
     ajusteMobile: "cover",
   },
   {
+    id: "portal-aluno",
+    produto: "musicpro",
+    titulo: "Portal e app do aluno",
+    descricao:
+      "Seus alunos acompanham aulas, materiais, avisos e resultados pelo Portal do Aluno — e pelo aplicativo no celular.",
+    sistema: "MusicPro · Área do aluno",
+    desktop: "/prints/musicpro-portal-aluno-desktop.png",
+    mobile: "",
+    ajusteDesktop: "contain",
+    ajusteMobile: "cover",
+  },
+  {
     id: "financeiro",
     produto: "musicpro",
     titulo: "Financeiro e relatórios",
@@ -44,7 +56,7 @@ export const telasSistema: TelaSistema[] = [
     produto: "musicpro",
     titulo: "Contratos e matrículas",
     descricao:
-      "Organize contratos, matrículas e vencimentos em um só lugar, sem papelada.",
+      "Monte modelos de contrato em blocos, com variáveis automáticas, e organize matrículas sem papelada.",
     sistema: "MusicPro",
     desktop: "/prints/contratos-desktop.png",
     mobile: "/prints/contratos-mobile.png",
@@ -56,7 +68,7 @@ export const telasSistema: TelaSistema[] = [
     produto: "musicpro",
     titulo: "Automações do dia a dia",
     descricao:
-      "Automatize lembretes, cobranças e tarefas repetitivas para ganhar tempo na gestão.",
+      "Automatize lembretes de aula, cobranças, avisos e mensagens de aniversário pelo WhatsApp.",
     sistema: "MusicPro",
     desktop: "/prints/automacoes-desktop.png",
     mobile: "/prints/automacoes-mobile.png",
