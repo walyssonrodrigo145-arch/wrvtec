@@ -48,14 +48,14 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/admin",
+        source: "/master-panel",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow" },
           { key: "Cache-Control", value: "no-store" },
         ],
       },
       {
-        source: "/admin/:path*",
+        source: "/master-panel/:path*",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow" },
           { key: "Cache-Control", value: "no-store" },

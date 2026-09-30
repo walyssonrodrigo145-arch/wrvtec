@@ -3,8 +3,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
 import { Icon } from "@/components/ui/Icon";
-import { StatusSelect } from "@/app/admin/StatusSelect";
-import { logoutAction } from "@/app/admin/actions";
+import { StatusSelect } from "@/app/master-panel/StatusSelect";
+import { logoutAction } from "@/app/master-panel/actions";
 import { sessaoAtiva } from "@/lib/admin-auth";
 import { listarLeads } from "@/lib/leads-store";
 import { statusValidos, type LeadStatus } from "@/lib/leads-types";
@@ -32,7 +32,7 @@ export default async function AdminPage({
 }: {
   searchParams: Promise<{ status?: string; q?: string }>;
 }) {
-  if (!(await sessaoAtiva())) redirect("/admin/login");
+  if (!(await sessaoAtiva())) redirect("/master-panel/login");
 
   const { status, q } = await searchParams;
   const statusFiltro = statusValidos.includes(status as LeadStatus)
@@ -67,7 +67,7 @@ export default async function AdminPage({
 
           <div className="flex items-center gap-2">
             <a
-              href="/api/admin/export"
+              href="/api/master-panel/export"
               className="inline-flex h-10 items-center gap-2 rounded-full border border-line bg-white px-4 text-xs font-semibold text-navy shadow-sm transition-all duration-300 hover:border-blue/40 hover:text-blue"
             >
               <Icon name="check" className="h-3.5 w-3.5" />
@@ -157,7 +157,7 @@ export default async function AdminPage({
           </button>
           {filtroAtivo ? (
             <Link
-              href="/admin"
+              href="/master-panel"
               className="inline-flex h-11 shrink-0 items-center justify-center rounded-full border border-line px-4 text-xs font-semibold text-muted transition-colors hover:text-blue"
             >
               Limpar

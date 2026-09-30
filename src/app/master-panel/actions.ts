@@ -22,20 +22,20 @@ export async function loginAction(formData: FormData): Promise<void> {
 
   const limite = checkRateLimit(hashKey(`login:${ip}`));
   if (!limite.allowed) {
-    redirect("/admin/login?erro=limite");
+    redirect("/master-panel/login?erro=limite");
   }
 
   if (!verificarSenha(senha)) {
-    redirect("/admin/login?erro=1");
+    redirect("/master-panel/login?erro=1");
   }
 
   await criarSessao();
-  redirect("/admin");
+  redirect("/master-panel");
 }
 
 export async function logoutAction(): Promise<void> {
   await encerrarSessao();
-  redirect("/admin/login");
+  redirect("/master-panel/login");
 }
 
 export async function atualizarStatusAction(
@@ -45,5 +45,5 @@ export async function atualizarStatusAction(
   if (!(await sessaoAtiva())) return;
   if (!statusValidos.includes(status as LeadStatus)) return;
   await atualizarStatusLead(id, status as LeadStatus);
-  revalidatePath("/admin");
+  revalidatePath("/master-panel");
 }

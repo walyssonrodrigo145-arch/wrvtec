@@ -2,7 +2,7 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { atualizarStatusAction } from "@/app/admin/actions";
+import { atualizarStatusAction } from "@/app/master-panel/actions";
 import { rotuloStatus, statusValidos, type LeadStatus } from "@/lib/leads-types";
 
 export function StatusSelect({

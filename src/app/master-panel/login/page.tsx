@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
 import { Icon } from "@/components/ui/Icon";
 import { adminConfigurado, sessaoAtiva } from "@/lib/admin-auth";
-import { loginAction } from "@/app/admin/actions";
+import { loginAction } from "@/app/master-panel/actions";
 
 export const metadata: Metadata = {
   title: "Entrar na gestão de leads",
@@ -21,7 +21,7 @@ export default async function AdminLoginPage({
 }: {
   searchParams: Promise<{ erro?: string }>;
 }) {
-  if (await sessaoAtiva()) redirect("/admin");
+  if (await sessaoAtiva()) redirect("/master-panel");
 
   const { erro } = await searchParams;
   const configurado = adminConfigurado();
