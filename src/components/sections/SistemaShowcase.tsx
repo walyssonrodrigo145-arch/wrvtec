@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Pause, Play } from "lucide-react";
 import { Section } from "@/components/layout/Section";
 import { Icon } from "@/components/ui/Icon";
 import { LaptopFrame } from "@/components/ui/LaptopFrame";
@@ -97,7 +96,6 @@ function ImagemCompleta({
 export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
   const [ativoId, setAtivoId] = useState(itens[0]?.id ?? "");
   const [versao, setVersao] = useState(0);
-  const [pausadoManual, setPausadoManual] = useState(false);
   const [emVista, setEmVista] = useState(false);
   const [comFoco, setComFoco] = useState(false);
   const [hover, setHover] = useState(false);
@@ -139,7 +137,7 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
   }, []);
 
   const executando =
-    !pausadoManual && !hover && !comFoco && emVista && abaVisivel && !reduzido;
+    !hover && !comFoco && emVista && abaVisivel && !reduzido;
 
   const proximo = useCallback(() => {
     setAtivoId((atualId) => {
@@ -323,31 +321,6 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
                 );
               })}
               </div>
-
-              {!reduzido ? (
-                <div className="mt-4 flex items-center justify-between gap-3 px-1">
-                  <span className="text-xs text-muted">
-                    Reprodução automática
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => setPausadoManual((valor) => !valor)}
-                    aria-pressed={pausadoManual}
-                    aria-label={
-                      pausadoManual
-                        ? "Retomar reprodução automática"
-                        : "Pausar reprodução automática"
-                    }
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-white text-navy shadow-sm transition-all duration-300 hover:border-blue/40 hover:text-blue active:scale-95"
-                  >
-                    {pausadoManual ? (
-                      <Play className="h-4 w-4" aria-hidden="true" />
-                    ) : (
-                      <Pause className="h-4 w-4" aria-hidden="true" />
-                    )}
-                  </button>
-                </div>
-              ) : null}
             </div>
           </Reveal>
 
