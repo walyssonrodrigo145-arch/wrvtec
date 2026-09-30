@@ -9,6 +9,7 @@ export type Produto = {
   descricao: string;
   descricaoLonga: string;
   logo: ProdutoLogo;
+  url: string;
   recursos: string[];
   ordem: number;
 };
@@ -23,6 +24,7 @@ export const produtos: Produto[] = [
     descricaoLonga:
       "O MusicPro é o sistema de gestão completo para escolas de música. Centralize matrículas, turmas, agenda de aulas, mensalidades e relatórios em uma plataforma simples de usar, feita para o dia a dia da sua escola.",
     logo: "musicpro",
+    url: "https://wrmusicpro.com.br/",
     recursos: [
       "Gestão de alunos, turmas e professores",
       "Controle financeiro e de mensalidades",
@@ -40,6 +42,7 @@ export const produtos: Produto[] = [
     descricaoLonga:
       "O DancePro organiza a rotina da sua escola de dança: turmas, horários, mensalidades, frequência e comunicação com os responsáveis, tudo em um único sistema.",
     logo: "dancepro",
+    url: "https://dancepro.wrvsystems.com.br/",
     recursos: [
       "Controle de alunos e turmas",
       "Financeiro, planos e mensalidades",

@@ -90,6 +90,10 @@ export default async function ProdutoPage({ params }: Props) {
               Fale com um especialista
               <Icon name="arrow-right" className="h-4 w-4" />
             </Button>
+            <Button variant="outline" size="lg" href={produto.url}>
+              <Icon name="external-link" className="h-4 w-4" />
+              Conhecer o sistema
+            </Button>
             <Button variant="outline" size="lg" href={whatsappLink()}>
               <Icon name="whatsapp" className="h-4 w-4" />
               WhatsApp

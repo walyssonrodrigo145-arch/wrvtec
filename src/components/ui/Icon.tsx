@@ -4,6 +4,7 @@ import {
   Check,
   Cloud,
   Code,
+  ExternalLink,
   Globe,
   Headphones,
   Layers,
@@ -39,6 +40,7 @@ export type IconName =
   | "globe"
   | "smartphone"
   | "gear"
+  | "external-link"
   | "whatsapp"
   | "instagram"
   | "linkedin"
@@ -62,6 +64,7 @@ const lucide: Record<Exclude<IconName, "whatsapp" | "instagram" | "linkedin" | "
   globe: Globe,
   smartphone: Smartphone,
   gear: Settings,
+  "external-link": ExternalLink,
 };
 
 const brands: Record<"whatsapp" | "instagram" | "linkedin" | "youtube", ReactElement> = {

@@ -74,7 +74,7 @@ function ImagemCompleta({
         alt={alt}
         width={921}
         height={1707}
-        quality={90}
+        quality={95}
         sizes={sizes}
         className={cn("h-72 w-auto max-w-none sm:h-96 lg:h-[29rem]", className)}
       />
@@ -87,7 +87,7 @@ function ImagemCompleta({
       alt={alt}
       width={1800}
       height={1166}
-      quality={90}
+      quality={95}
       sizes={sizes}
       className={cn("h-auto w-full", className)}
     />
@@ -165,7 +165,7 @@ export function SistemaShowcase({ itens }: { itens: TelaSistema[] }) {
       <ImagemCompleta
         src={ativo.desktop}
         alt={`Funcionalidade: ${ativo.titulo}`}
-        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 72vw, 700px"
+        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 72vw, 830px"
         formato="desktop"
       />
     ) : (
