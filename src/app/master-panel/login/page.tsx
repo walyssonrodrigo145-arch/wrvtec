@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+export const dynamic = "force-dynamic";
+
 const mensagensErro: Record<string, string> = {
   "1": "Senha incorreta. Tente novamente.",
   limite: "Muitas tentativas. Aguarde alguns minutos e tente novamente.",
